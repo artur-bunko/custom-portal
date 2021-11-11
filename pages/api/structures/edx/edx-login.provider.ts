@@ -1,7 +1,7 @@
 import axios from 'axios';
 import FormData from 'form-data';
 import * as cookie from 'cookie';
-import { LoginProvider } from '../../../typings/interfaces/login.provider';
+import LoginProvider from '../../../../typings/interfaces/login.provider';
 
 export class EdxLoginImpl implements LoginProvider {
   async auth(loginParams: {

@@ -1,4 +1,4 @@
-import { LoginProvider } from '../../typings/interfaces/login.provider';
+import LoginProvider from '../../../typings/interfaces/login.provider';
 
 export interface AuthStrategy {
   login(loginParams: { email: string; password: string }): Promise<void>;
@@ -7,7 +7,7 @@ export interface AuthStrategy {
 export class AuthStrategyImpl implements AuthStrategy {
   constructor(private readonly loginProviders: LoginProvider[]) {}
 
-  async login(loginParams: { email: string; password: string }) {
+  async login(loginParams: { email: string; username: string; password: string }) {
     const providersAsync = this.loginProviders.map((loginProvider) =>
       loginProvider.auth(loginParams),
     );

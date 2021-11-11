@@ -1,4 +1,4 @@
-export type UserDTO = {
+type UserDTO = {
   [key: string]: string;
   fullName: string;
   username: string;
@@ -6,3 +6,5 @@ export type UserDTO = {
   password: string;
   country: string;
 };
+
+export default UserDTO;

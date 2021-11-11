@@ -1,6 +1,6 @@
-import { UserDTO } from '../../typings/types/userDTO';
-import { RegistrationProvider } from '../../typings/interfaces/registration.provider';
-import { RegistrationStrategy } from '../../typings/interfaces/registration.strategy';
+import UserDTO from '../../../typings/types/userDTO';
+import RegistrationProvider from '../../../typings/interfaces/registration.provider';
+import RegistrationStrategy from '../../../typings/interfaces/registration.strategy';
 
 export class RegistrationStrategyImp implements RegistrationStrategy {
   constructor(private readonly registrationProviders: RegistrationProvider[]) {}

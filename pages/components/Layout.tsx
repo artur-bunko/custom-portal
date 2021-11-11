@@ -3,7 +3,7 @@ import styles from  '../../styles/Home.module.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import {FC} from "react";
 
-export const Layout: FC = ({children}) => {
+const Layout: FC = ({children}) => {
 	return <div>
 		<Head>
 			<title>Create Next App</title>
@@ -16,3 +16,5 @@ export const Layout: FC = ({children}) => {
 		</main>
 	</div>
 }
+
+export default Layout;

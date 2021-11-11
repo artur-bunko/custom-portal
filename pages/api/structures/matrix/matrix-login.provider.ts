@@ -1,4 +1,4 @@
-import { LoginProvider } from '../../../typings/interfaces/login.provider';
+import LoginProvider from '../../../../typings/interfaces/login.provider';
 import { createClient } from 'matrix-js-sdk';
 
 export class MatrixLoginImp implements LoginProvider {

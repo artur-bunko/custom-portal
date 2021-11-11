@@ -1,7 +1,6 @@
-import { RegistrationProvider } from '../../../typings/interfaces/registration.provider';
-import { UserDTO } from '../../../typings/types/userDTO';
+import RegistrationProvider from '../../../../typings/interfaces/registration.provider';
+import UserDTO from '../../../../typings/types/userDTO';
 import {createClient, MatrixClient} from 'matrix-js-sdk';
-import axios from "axios";
 
 export class MatrixRegistrationProviderImp implements RegistrationProvider {
   private client: MatrixClient;

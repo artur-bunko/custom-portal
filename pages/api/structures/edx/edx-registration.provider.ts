@@ -1,5 +1,5 @@
-import { UserDTO } from '../../../typings/types/userDTO';
-import { RegistrationProvider } from '../../../typings/interfaces/registration.provider';
+import UserDTO from '../../../../typings/types/userDTO';
+import RegistrationProvider from '../../../../typings/interfaces/registration.provider';
 import axios from 'axios';
 import * as cookie from 'cookie';
 import FormData from 'form-data';

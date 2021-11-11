@@ -2,7 +2,6 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import {RegistrationStrategyImp} from "./structures/registration.strategy";
 import {MatrixRegistrationProviderImp} from "./structures/matrix/matrix-registration.provider";
 import {EdxRegistrationProviderImp} from "./structures/edx/edx-registration.provider";
-import {serialize} from "cookie";
 
 type Data = Record<string, string>
 
