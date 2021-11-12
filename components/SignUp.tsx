@@ -72,7 +72,7 @@ const SignUp: FC<{ countryOptions: CountryOption[] }> = ({countryOptions = []}) 
 			<div className="rounded d-flex justify-content-center">
 				<div className="col-md-4 col-sm-12 shadow-lg p-5 bg-light">
 					<div className="text-center">
-						<h3 className="text-primary">Create Account</h3>
+						<h3 className="text-primary">{isCreated ? "Resources" : "Create Account"}</h3>
 					</div>
 					<div className="p-4">
 						{ error.show && <div className="alert alert-danger fade show" role="alert">
