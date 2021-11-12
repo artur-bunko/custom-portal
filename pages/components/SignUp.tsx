@@ -1,6 +1,7 @@
 import axios from "axios";
 import Link from 'next/link';
-import {FC, useRef} from "react";
+import {FC, useRef, useState} from "react";
+import {Domains} from "./Domais";
 
 type CountryOption = {
 	value: string,
@@ -8,9 +9,15 @@ type CountryOption = {
 	default: boolean
 }
 
-
+type DomainCredentials = {
+	domain: string,
+	name: string,
+	password: string
+}
 
 const SignUp: FC<{ countryOptions: CountryOption[] }> = ({countryOptions = []})  => {
+	const [isCreated, setIsCreated] = useState(false);
+	const [createdUser, setCreatedUser] = useState<DomainCredentials[]>([])
 	const formRef = useRef<HTMLFormElement>(null);
 	const iframeRef = useRef<HTMLIFrameElement>(null);
 
@@ -20,18 +27,29 @@ const SignUp: FC<{ countryOptions: CountryOption[] }> = ({countryOptions = []}) 
 		const username = email.split('@')[0];
 		const password = formRef.current?.password.value;
 
-		const response = await axios.post('/api/signUp', {
-			fullName,
-			email,
-			username,
-			password
-		});
+		// const response = await axios.post('/api/signUp', {
+		// 	fullName,
+		// 	email,
+		// 	username,
+		// 	password
+		// });
 
-		Object.keys(response.data).forEach(item => {
-			localStorage.setItem(item, response.data[item]);
-		});
-
-		window.location.href = "https://learning.storeworkflows.com";
+		// Object.keys(response.data).forEach(item => {
+		// 	localStorage.setItem(item, response.data[item]);
+		// });
+		setCreatedUser([
+			{
+				domain: "learning.storeworkflows.com",
+				name: email,
+				password: password
+			},
+			{
+				domain: "riot.storeworkflows.com",
+				name: username,
+				password: password
+			}
+		])
+		setIsCreated(true);
 	}
 
 	return <div className="container-fluid vh-100" style={{display: 'grid', alignItems: 'center'}}>
@@ -42,7 +60,7 @@ const SignUp: FC<{ countryOptions: CountryOption[] }> = ({countryOptions = []}) 
 						<h3 className="text-primary">Create Account</h3>
 					</div>
 					<div className="p-4">
-						<form ref={formRef} onSubmit={e => e.preventDefault()}>
+						{ !isCreated && <form ref={formRef} onSubmit={e => e.preventDefault()}>
 							<div className="input-group mb-3">
                                     <span className="input-group-text bg-primary"><i
 																				className="bi bi-person-plus text-white"/></span>
@@ -72,7 +90,8 @@ const SignUp: FC<{ countryOptions: CountryOption[] }> = ({countryOptions = []}) 
 							<p className="text-center mt-3">Already have an account?
 								<Link href='/signIn'><a className="text-primary">Sign in</a></Link>
 							</p>
-						</form>
+						</form> }
+						{ isCreated &&  <Domains domains={createdUser} /> }
 					</div>
 				</div>
 			</div>
