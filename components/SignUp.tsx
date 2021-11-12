@@ -27,16 +27,16 @@ const SignUp: FC<{ countryOptions: CountryOption[] }> = ({countryOptions = []}) 
 		const username = email.split('@')[0];
 		const password = formRef.current?.password.value;
 
-		// const response = await axios.post('/api/signUp', {
-		// 	fullName,
-		// 	email,
-		// 	username,
-		// 	password
-		// });
+		const response = await axios.post('/api/signUp', {
+			fullName,
+			email,
+			username,
+			password
+		});
 
-		// Object.keys(response.data).forEach(item => {
-		// 	localStorage.setItem(item, response.data[item]);
-		// });
+		Object.keys(response.data).forEach(item => {
+			localStorage.setItem(item, response.data[item]);
+		});
 		setCreatedUser([
 			{
 				domain: "learning.storeworkflows.com",
