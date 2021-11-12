@@ -1,5 +1,5 @@
 import {FC, useState} from "react";
-import styles from "../../styles/Value.module.css";
+import styles from "../styles/Value.module.css";
 
 interface PasswordProps {
 	password: string

@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.css'
-import SignUp from "./components/SignUp";
+import SignUp from "../components/SignUp";
 import axios from "axios";
 import {InferGetStaticPropsType} from "next";
 import {EdxRegistrationProviderImp} from "./api/structures/edx/edx-registration.provider";

@@ -1,5 +1,5 @@
 import {FC, useMemo, useState} from "react";
-import styles from "../../styles/Value.module.css";
+import styles from "../styles/Value.module.css";
 import classNames from "classnames";
 
 interface ValueProps {
