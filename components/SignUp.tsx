@@ -17,39 +17,54 @@ type DomainCredentials = {
 
 const SignUp: FC<{ countryOptions: CountryOption[] }> = ({countryOptions = []})  => {
 	const [isCreated, setIsCreated] = useState(false);
-	const [createdUser, setCreatedUser] = useState<DomainCredentials[]>([])
+	const [createdUser, setCreatedUser] = useState<DomainCredentials[]>([]);
+	const [error, setError] = useState<{show: boolean, message: string}>( {
+		show: false,
+		message: ''
+	})
 	const formRef = useRef<HTMLFormElement>(null);
-	const iframeRef = useRef<HTMLIFrameElement>(null);
 
 	const signUp = async () => {
-		const fullName = formRef.current?.fullName.value;
-		const email = formRef.current?.email.value;
-		const username = email.split('@')[0];
-		const password = formRef.current?.password.value;
+		try {
+			setError({
+				show: false,
+				message: ''
+			});
+			const fullName = formRef.current?.fullName.value;
+			const email = formRef.current?.email.value;
+			const username = email.split('@')[0];
+			const password = formRef.current?.password.value;
 
-		const response = await axios.post('/api/signUp', {
-			fullName,
-			email,
-			username,
-			password
-		});
+			const response = await axios.post('/api/signUp', {
+				fullName,
+				email,
+				username,
+				password
+			});
 
-		Object.keys(response.data).forEach(item => {
-			localStorage.setItem(item, response.data[item]);
-		});
-		setCreatedUser([
-			{
-				domain: "learning.storeworkflows.com",
-				name: email,
-				password: password
-			},
-			{
-				domain: "riot.storeworkflows.com",
-				name: username,
-				password: password
-			}
-		])
-		setIsCreated(true);
+			Object.keys(response.data).forEach(item => {
+				localStorage.setItem(item, response.data[item]);
+			});
+
+			setCreatedUser([
+				{
+					domain: "learning.storeworkflows.com",
+					name: email,
+					password: password
+				},
+				{
+					domain: "riot.storeworkflows.com",
+					name: username,
+					password: password
+				}
+			])
+			setIsCreated(true);
+		} catch (e: any) {
+			setError({
+				show: true,
+				message: e.response.data.message
+			})
+		}
 	}
 
 	return <div className="container-fluid vh-100" style={{display: 'grid', alignItems: 'center'}}>
@@ -60,6 +75,9 @@ const SignUp: FC<{ countryOptions: CountryOption[] }> = ({countryOptions = []}) 
 						<h3 className="text-primary">Create Account</h3>
 					</div>
 					<div className="p-4">
+						{ error.show && <div className="alert alert-danger fade show" role="alert">
+							{error.message}
+						</div> }
 						{ !isCreated && <form ref={formRef} onSubmit={e => e.preventDefault()}>
 							<div className="input-group mb-3">
                                     <span className="input-group-text bg-primary"><i
