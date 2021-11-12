@@ -14,7 +14,7 @@ interface DomainsProps {
 export const Domains: FC<DomainsProps> = ({domains}) => {
 	return <div className="list-group">
 		{
-			domains.map(({domain, name, password}) => <DomainInfo domain={domain} name={name} password={password} />)
+			domains.map(({domain, name, password}) => <DomainInfo key={domain} domain={domain} name={name} password={password} />)
 		}
 	</div>
 }
