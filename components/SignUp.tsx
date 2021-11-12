@@ -2,6 +2,8 @@ import axios from "axios";
 import Link from 'next/link';
 import {FC, useRef, useState} from "react";
 import {Domains} from "./Domais";
+import styles from "../styles/SignUp.module.css";
+import classNames from "classnames";
 
 type CountryOption = {
 	value: string,
@@ -70,7 +72,7 @@ const SignUp: FC<{ countryOptions: CountryOption[] }> = ({countryOptions = []}) 
 	return <div className="container-fluid vh-100" style={{display: 'grid', alignItems: 'center'}}>
 		<div>
 			<div className="rounded d-flex justify-content-center">
-				<div className="col-md-4 col-sm-12 shadow-lg p-5 bg-light">
+				<div className={classNames("col-md-4 col-sm-12 shadow-lg p-5 bg-light", styles.signUpContainer)}>
 					<div className="text-center">
 						<h3 className="text-primary">{isCreated ? "Resources" : "Create Account"}</h3>
 					</div>

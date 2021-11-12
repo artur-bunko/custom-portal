@@ -1,0 +1,4 @@
+.signUpContainer {
+    backdrop-filter: blur(5px);
+    --bs-bg-opacity: .8;
+}
