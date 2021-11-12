@@ -11,7 +11,7 @@ const Layout: FC = ({children}) => {
 			<link rel="icon" href="/favicon.ico" />
 		</Head>
 
-		<main className={styles.main}>
+		<main className={styles.main} style={{background: "url('/valley.jpeg')"}}>
 			{children}
 		</main>
 	</div>
